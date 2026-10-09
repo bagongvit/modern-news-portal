@@ -1,0 +1,298 @@
+/* ==========================================================================
+   Modern Newsroom Admin Portal Styling (Header & Sidebar UX Polish)
+   ========================================================================== */
+
+/* 1. APP HEADER POLISH */
+.app-header {
+  backdrop-filter: blur(12px) !important;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+[data-theme="light"] .app-header {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03) !important;
+}
+
+[data-theme="dark"] .app-header {
+  background-color: rgba(11, 17, 32, 0.92) !important;
+  border-bottom: 1px solid rgba(30, 41, 59, 0.9) !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Hide default plain Payload account icon since we have our full-featured interactive Newsroom Profile Dropdown */
+.app-header__account {
+  display: none !important;
+}
+
+@keyframes nrFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nr-dropdown-item:hover {
+  background-color: var(--theme-elevation-100, #f1f5f9) !important;
+  color: #2563eb !important;
+}
+
+[data-theme="dark"] .nr-dropdown-item:hover {
+  background-color: #1e293b !important;
+  color: #60a5fa !important;
+}
+
+@media (min-width: 768px) {
+  .admin-profile-name-text {
+    display: inline-block !important;
+  }
+}
+
+/* 2. SIDEBAR NAVIGATION POLISH */
+.nav,
+.nav__wrap {
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+[data-theme="light"] .nav__wrap {
+  background-color: #fcfdfe !important;
+  border-right: 1px solid #e2e8f0 !important;
+}
+
+[data-theme="dark"] .nav__wrap {
+  background-color: #090e1a !important;
+  border-right: 1px solid #1e293b !important;
+}
+
+/* Group Headers (Collections, Globals) */
+.nav-group__label,
+button.nav-group__toggle {
+  font-size: 0.6875rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: var(--theme-elevation-400, #94a3b8) !important;
+  padding-left: 0.75rem !important;
+  padding-right: 0.75rem !important;
+  margin-top: 0.75rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+/* Navigation Links */
+.nav__link {
+  border-radius: 0.5rem !important;
+  margin: 0.15rem 0.5rem !important;
+  padding: 0.5rem 0.75rem !important;
+  font-size: 0.8125rem !important;
+  font-weight: 600 !important;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  color: var(--theme-elevation-700, #334155) !important;
+}
+
+[data-theme="dark"] .nav__link {
+  color: #cbd5e1 !important;
+}
+
+.nav__link:hover {
+  background-color: var(--theme-elevation-100, #f1f5f9) !important;
+  color: #2563eb !important;
+  transform: translateX(2px) !important;
+}
+
+[data-theme="dark"] .nav__link:hover {
+  background-color: #131c31 !important;
+  color: #60a5fa !important;
+}
+
+/* Active Nav Link */
+.nav__link.active,
+.nav__link--active {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(37, 99, 235, 0.06)) !important;
+  color: #2563eb !important;
+  font-weight: 700 !important;
+  border-left: 3px solid #2563eb !important;
+}
+
+[data-theme="dark"] .nav__link.active,
+[data-theme="dark"] .nav__link--active {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.25), rgba(37, 99, 235, 0.1)) !important;
+  color: #93c5fd !important;
+  border-left-color: #3b82f6 !important;
+}
+
+/* Visual Emojis/Icons for Collection Links */
+.nav__link[href*="/collections/articles"] .nav__link-label::before {
+  content: "📰 ";
+  margin-right: 0.4rem;
+}
+
+.nav__link[href*="/collections/categories"] .nav__link-label::before {
+  content: "📁 ";
+  margin-right: 0.4rem;
+}
+
+.nav__link[href*="/collections/authors"] .nav__link-label::before {
+  content: "👤 ";
+  margin-right: 0.4rem;
+}
+
+.nav__link[href*="/collections/tags"] .nav__link-label::before {
+  content: "🏷️ ";
+  margin-right: 0.4rem;
+}
+
+.nav__link[href*="/collections/comments"] .nav__link-label::before {
+  content: "💬 ";
+  margin-right: 0.4rem;
+}
+
+.nav__link[href*="/collections/media"] .nav__link-label::before {
+  content: "📸 ";
+  margin-right: 0.4rem;
+}
+
+.nav__link[href*="/collections/users"] .nav__link-label::before {
+  content: "👥 ";
+  margin-right: 0.4rem;
+}
+
+.nav__link[href*="/collections/newsletters"] .nav__link-label::before {
+  content: "✉️ ";
+  margin-right: 0.4rem;
+}
+
+.nav__link[href*="/globals/site-settings"] .nav__link-label::before {
+  content: "⚙️ ";
+  margin-right: 0.4rem;
+}
+
+.nav__link[href*="/globals/breaking-news"] .nav__link-label::before {
+  content: "⚡ ";
+  margin-right: 0.4rem;
+}
+
+/* Nav Toggler */
+.nav-toggler {
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+.nav-toggler:hover {
+  background-color: var(--theme-elevation-100, #f1f5f9) !important;
+}
+
+[data-theme="dark"] .nav-toggler:hover {
+  background-color: #1e293b !important;
+}
+
+/* ==========================================================================
+   3. EDITORIAL WORKSTATION & ARTICLE EDITOR POLISH
+   ========================================================================== */
+
+/* Tabs Styling */
+.tabs-field__tabs,
+.render-tabs,
+.tab-list {
+  display: flex !important;
+  gap: 0.5rem !important;
+  margin-bottom: 1.5rem !important;
+  border-bottom: 2px solid var(--theme-elevation-150, #e2e8f0) !important;
+  padding-bottom: 0.5rem !important;
+}
+
+.tabs-field__tab-button,
+.tab-button {
+  font-weight: 700 !important;
+  font-size: 0.875rem !important;
+  padding: 0.625rem 1.125rem !important;
+  border-radius: 0.5rem 0.5rem 0 0 !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  color: var(--theme-elevation-600, #475569) !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+}
+
+.tabs-field__tab-button:hover,
+.tab-button:hover {
+  color: #2563eb !important;
+  background-color: var(--theme-elevation-50, #f8fafc) !important;
+}
+
+.tabs-field__tab-button--active,
+.tabs-field__tab-button[aria-selected="true"],
+.tab-button--active {
+  color: #2563eb !important;
+  font-weight: 800 !important;
+  position: relative !important;
+  background: rgba(37, 99, 235, 0.06) !important;
+  border-bottom: 3px solid #2563eb !important;
+  margin-bottom: -0.5rem !important;
+  padding-bottom: calc(0.625rem + 2px) !important;
+}
+
+[data-theme="dark"] .tabs-field__tab-button--active,
+[data-theme="dark"] .tabs-field__tab-button[aria-selected="true"],
+[data-theme="dark"] .tab-button--active {
+  color: #60a5fa !important;
+  background: rgba(37, 99, 235, 0.15) !important;
+  border-bottom-color: #3b82f6 !important;
+}
+
+/* Form Inputs & Textareas */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+textarea {
+  border-radius: 0.5rem !important;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease !important;
+  font-family: inherit !important;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+  outline: none !important;
+}
+
+/* Lead and Content Textareas */
+textarea#field-lead,
+textarea#field-content {
+  line-height: 1.6 !important;
+  font-size: 0.9375rem !important;
+}
+
+/* Sidebar Editorial Panel */
+.doc-sidebar,
+.collection-edit__sidebar {
+  border-left: 1px solid var(--theme-elevation-150, #e2e8f0) !important;
+  background-color: var(--theme-elevation-50, #fbfcfe) !important;
+  padding-left: 1.5rem !important;
+}
+
+[data-theme="dark"] .doc-sidebar,
+[data-theme="dark"] .collection-edit__sidebar {
+  border-left-color: #1e293b !important;
+  background-color: #0b1120 !important;
+}
+
+/* Field Description / Helper Text */
+.field-description {
+  font-size: 0.8125rem !important;
+  color: var(--theme-elevation-500, #64748b) !important;
+  margin-top: 0.35rem !important;
+  line-height: 1.45 !important;
+}

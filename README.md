@@ -34,3 +34,19 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Halaman dan API tambahan
+
+- Halaman informasi: `/tentang`, `/redaksi`, dan `/kontak`.
+- API formulir: `POST /api/newsletter` dan `POST /api/comments` dengan body JSON.
+- Salin `.env.example` menjadi `.env.local`, lalu isi `PAYLOAD_SECRET` sebelum menjalankan aplikasi.
+- Jalankan database lokal dengan `docker compose up -d postgres`.
+
+## Alur reporter
+
+1. Admin membuat akun pada koleksi **Users** dan menetapkan role **Author**.
+2. Editor membuat profil pada koleksi **Authors** dan mengaitkannya ke akun tersebut melalui field **User**.
+3. Reporter login melalui `/admin`, lalu membuka `/reporter` untuk melihat dan mengelola tulisannya.
+4. Reporter hanya dapat membuat draf, mengedit, dan menghapus artikel miliknya. Editor atau admin yang menerbitkan artikel.
+
+Perubahan field Payload baru perlu diterapkan pada skema PostgreSQL sebelum deploy. Gunakan alur migrasi Payload yang sesuai dengan database environment; jangan menjalankan migrasi produksi tanpa backup dan peninjauan rencana migrasinya.

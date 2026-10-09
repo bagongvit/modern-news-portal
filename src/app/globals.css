@@ -1,26 +1,449 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *, .solar, .solar *));
+
+@theme {
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+}
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc;
+  --foreground: #090d16;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --border: #e2e8f0;
+  --card: #ffffff;
+  --card-foreground: #090d16;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --accent: #f1f5f9;
+  --accent-foreground: #0f172a;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  --background: #080c14;
+  --foreground: #f8fafc;
+  --muted: #0f172a;
+  --muted-foreground: #94a3b8;
+  --border: #1e293b;
+  --card: #0d1322;
+  --card-foreground: #f8fafc;
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+  --accent: #151e34;
+  --accent-foreground: #f8fafc;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Solar Cosmos Theme: Deep Celestial Galaxy with Solar Amber Accents */
+.solar {
+  --background: #030712;
+  --foreground: #fefce8;
+  --muted: #0b1120;
+  --muted-foreground: #94a3b8;
+  --border: #1e293b;
+  --card: #090e1c;
+  --card-foreground: #fefce8;
+  --primary: #f59e0b;
+  --primary-foreground: #030712;
+  --accent: #172033;
+  --accent-foreground: #fef3c7;
+}
+
+html.solar body {
+  background-color: #030712;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(245, 158, 11, 0.08), transparent 70%),
+    radial-gradient(circle at 100% 20%, rgba(99, 102, 241, 0.04), transparent 40%),
+    radial-gradient(circle at 0% 80%, rgba(234, 179, 8, 0.03), transparent 50%);
+}
+
+html.solar .bg-blue-600 {
+  background-color: #f59e0b !important;
+  color: #030712 !important;
+}
+
+html.solar .hover\:bg-blue-700:hover {
+  background-color: #d97706 !important;
+}
+
+html.solar .text-blue-600,
+html.solar .dark\:text-blue-400 {
+  color: #fbbf24 !important;
+}
+
+html.solar .border-blue-600,
+html.solar .hover\:border-blue-500:hover {
+  border-color: #f59e0b !important;
+}
+
+html.solar .bg-blue-50,
+html.solar .dark\:bg-blue-950\/60,
+html.solar .dark\:bg-blue-950\/40,
+html.solar .dark\:bg-blue-950\/50 {
+  background-color: rgba(245, 158, 11, 0.12) !important;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-spin-slow {
+  animation: spin-slow 24s linear infinite;
 }
+
+/* Solar Cosmos Luxury Editorial Glow */
+html.solar .border-slate-200\/90,
+html.solar .dark\:border-slate-800 {
+  border-color: rgba(245, 158, 11, 0.15) !important;
+}
+
+html.solar article:hover,
+html.solar .group:hover {
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.12);
+}
+
+html.solar h1 a:hover,
+html.solar h2 a:hover,
+html.solar h3 a:hover,
+html.solar h4 a:hover {
+  color: #fbbf24 !important;
+  text-shadow: 0 0 12px rgba(251, 191, 36, 0.3);
+}
+
+html.solar #reading-progress-bar,
+html.solar .h-1.bg-blue-600 {
+  background: linear-gradient(90deg, #f59e0b, #fbbf24, #fde047) !important;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.5) !important;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family:
+      var(--font-sans),
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #2563eb;
+    color: #ffffff;
+  }
+}
+
+/* Editorial Serif & Heading Typography */
+.font-article {
+  font-family: var(--font-serif), Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+.font-editorial-headline {
+  font-family: var(--font-serif), Georgia, Cambria, "Times New Roman", Times, serif;
+  letter-spacing: -0.02em;
+}
+
+/* Glassmorphism & Surface Utilities */
+.glass-surface {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.dark .glass-surface {
+  background: rgba(13, 19, 34, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Drop-cap for editorial articles */
+.editorial-dropcap > p:first-of-type::first-letter {
+  float: left;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 3.85rem;
+  line-height: 0.85;
+  padding-top: 4px;
+  padding-right: 12px;
+  padding-bottom: 2px;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.dark .editorial-dropcap > p:first-of-type::first-letter {
+  color: #60a5fa;
+}
+
+/* Custom Editorial Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.35);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.6);
+}
+
+/* Hide scrollbar for clean horizontal news tickers & tab bars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Editorial prose styling */
+.prose {
+  max-width: 68ch;
+  line-height: 1.85;
+}
+
+.prose p {
+  margin-bottom: 1.35em;
+  font-size: 1.125rem;
+}
+
+.prose h2 {
+  margin-top: 2.25em;
+  margin-bottom: 0.85em;
+  font-size: 1.65rem;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.prose h3 {
+  margin-top: 1.85em;
+  margin-bottom: 0.65em;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+}
+
+.prose blockquote {
+  margin-top: 1.75em;
+  margin-bottom: 1.75em;
+  border-left: 4px solid #2563eb;
+  padding-left: 1.25rem;
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.dark .prose blockquote {
+  border-left-color: #3b82f6;
+}
+
+.prose ul {
+  margin-bottom: 1.35em;
+  margin-left: 1.35em;
+  list-style-type: disc;
+}
+
+.prose ol {
+  margin-bottom: 1.35em;
+  margin-left: 1.35em;
+  list-style-type: decimal;
+}
+
+/* Editorial Focus Mode: soft fade on chrome to maximize reading dwell time */
+body.editorial-focus-mode header,
+body.editorial-focus-mode footer {
+  opacity: 0.2;
+  transition: opacity 0.35s ease;
+}
+
+body.editorial-focus-mode header:hover,
+body.editorial-focus-mode footer:hover {
+  opacity: 1;
+}
+
+/* Dynamic Reader Font Size Controls */
+#main-article-content.font-size-base,
+#main-article-content.font-size-base p,
+#main-article-content.font-size-base .prose p {
+  font-size: 1.05rem !important;
+  line-height: 1.75 !important;
+}
+
+#main-article-content.font-size-lg,
+#main-article-content.font-size-lg p,
+#main-article-content.font-size-lg .prose p {
+  font-size: 1.3rem !important;
+  line-height: 1.85 !important;
+}
+
+#main-article-content.font-size-xl,
+#main-article-content.font-size-xl p,
+#main-article-content.font-size-xl .prose p {
+  font-size: 1.55rem !important;
+  line-height: 2 !important;
+}
+
+#main-article-content.font-size-base blockquote,
+#main-article-content.font-size-base .prose blockquote {
+  font-size: 1.15rem !important;
+}
+
+#main-article-content.font-size-lg blockquote,
+#main-article-content.font-size-lg .prose blockquote {
+  font-size: 1.4rem !important;
+}
+
+#main-article-content.font-size-xl blockquote,
+#main-article-content.font-size-xl .prose blockquote {
+  font-size: 1.65rem !important;
+}
+
+#main-article-content.font-size-base li,
+#main-article-content.font-size-base .prose li {
+  font-size: 1.05rem !important;
+}
+
+#main-article-content.font-size-lg li,
+#main-article-content.font-size-lg .prose li {
+  font-size: 1.3rem !important;
+}
+
+#main-article-content.font-size-xl li,
+#main-article-content.font-size-xl .prose li {
+  font-size: 1.55rem !important;
+}
+
+/* ==========================================================================
+   Editorial Zen / Distraction-Free Focus Mode
+   ========================================================================== */
+body.editorial-focus-mode {
+  background-color: #faf9f6 !important;
+}
+
+html.dark body.editorial-focus-mode {
+  background-color: #090d16 !important;
+}
+
+body.editorial-focus-mode header,
+body.editorial-focus-mode footer,
+body.editorial-focus-mode nav[aria-label="Navigasi Bawah Layar Sentuh"],
+body.editorial-focus-mode [data-component="breaking-news-ticker"],
+body.editorial-focus-mode [data-component="topbar"] {
+  display: none !important;
+}
+
+body.editorial-focus-mode article {
+  max-width: 780px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-top: 3.5rem !important;
+}
+
+body.editorial-focus-mode #main-article-content {
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+body.editorial-focus-mode #main-article-content p {
+  line-height: 1.95 !important;
+  color: #1e293b !important;
+}
+
+html.dark body.editorial-focus-mode #main-article-content p {
+  color: #e2e8f0 !important;
+}
+
+/* ==========================================================================
+   Clean Newspaper Print & PDF Export Styling
+   ========================================================================== */
+@media print {
+  /* Hide all interactive, navigation, and floating widgets */
+  header,
+  footer,
+  nav,
+  aside,
+  button,
+  #komentar,
+  [data-component="breaking-news-ticker"],
+  [data-component="topbar"],
+  [data-component="market-ticker"],
+  [aria-label="Toolbar Membaca Melayang"],
+  [aria-label="Pemutar Audio Mengambang"],
+  [aria-label="Pemberitahuan Berita Kilat"],
+  [aria-label="Barometer Reaksi Pembaca"] {
+    display: none !important;
+  }
+
+  body {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    font-size: 11pt !important;
+    line-height: 1.6 !important;
+  }
+
+  article {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #main-article-content {
+    font-family: Georgia, "Times New Roman", Times, serif !important;
+  }
+
+  #main-article-content p {
+    font-size: 11pt !important;
+    line-height: 1.7 !important;
+    color: #000000 !important;
+    orphans: 3;
+    widows: 3;
+  }
+
+  figure, img {
+    page-break-inside: avoid;
+    max-width: 100% !important;
+  }
+
+  /* Add print watermark header */
+  article::before {
+    content: "MODERN NEWS PORTAL — JURNALISME INDEPENDEN & TERPERCAYA";
+    display: block;
+    font-size: 9pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: 2pt solid #000;
+    padding-bottom: 6pt;
+    margin-bottom: 18pt;
+    color: #333;
+  }
+}
+
+
